@@ -1,0 +1,32 @@
+{
+   "action": {
+   },
+   "background": {
+      "service_worker": "service-worker-loader.js",
+      "type": "module"
+   },
+   "content_scripts": [ {
+      "js": [ "assets/content-script-loader.content.js.f2f36233.f574c788.js" ],
+      "matches": [ "\u003Call_urls>" ]
+   } ],
+   "description": "The IAB Europe CMP Validator checks web pages for the availability of a TCF registered CMP and facilitates their auditing.",
+   "icons": {
+      "128": "src/images/icon128.png",
+      "32": "src/images/icon32.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmxeZiwPC4zPKiANeCh7WCoa5O2N/ENFEFoj/7VRX3EbOY2gsd8c3NVAt6LZsfUdIDvFSs9r5BkkEAsNYW1k0P5M8sUe0spA44gLSTA/gmcQsV5xJgbdnmTZZX98rbLTuw5u3EzmKEVOHearDShE0soEw7yRFOmu8u0PG88a60wDbq6ySpBxZs7AT/8K2G+LaCILfXska5rsMXC9oq1MkMV05laEHD3jYopaBCCHiMyvMh5i58hTJNuHsD/t3DrulrzFylEAntxWVMaxXJonEYlxmIrPXdKpd0VTl90NHSxKjB+CJ3HvY8V9lV4NKMb9NLI1h0mmd+7o+NKU2d1esMQIDAQAB",
+   "manifest_version": 3,
+   "name": "CMP Validator",
+   "permissions": [ "activeTab", "scripting" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "2.3.2",
+   "web_accessible_resources": [ {
+      "matches": [ "\u003Call_urls>" ],
+      "resources": [ "index.html", "notfound.html", "src/images/*.png", "src/utils/structure.json" ],
+      "use_dynamic_url": false
+   }, {
+      "matches": [ "\u003Call_urls>" ],
+      "resources": [ "assets/content.js.f2f36233.js" ],
+      "use_dynamic_url": true
+   } ]
+}

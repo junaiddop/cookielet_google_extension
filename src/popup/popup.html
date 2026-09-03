@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="popup.css">
+  <title>Cookielet Consent Inspector</title>
+</head>
+<body data-ctx="popup">
+  <header class="header">
+    <img src="../../icons/icon48.png" alt="" class="logo">
+    <h1>Cookielet Consent Inspector</h1>
+    <button id="sidePanelBtn" class="btn btn-small" type="button" title="Keep the inspector open while you interact with the page">Side panel</button>
+    <span id="cmpStatusBadge" class="badge badge-muted">Searching…</span>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button class="tab-btn active" data-tab="overview" role="tab">Overview</button>
+    <button class="tab-btn" data-tab="gcm" role="tab">Google Consent Mode</button>
+    <button class="tab-btn" data-tab="tcf" role="tab">IAB TCF</button>
+    <button class="tab-btn" data-tab="gpp" role="tab">IAB GPP</button>
+    <button class="tab-btn" data-tab="uet" role="tab">Microsoft UET</button>
+    <button class="tab-btn" data-tab="about" role="tab">About</button>
+  </nav>
+
+  <main class="content">
+    <div id="guard" class="guard" hidden></div>
+    <div id="loading" class="muted loading">Searching for consent signals…</div>
+
+    <section id="view-overview" class="tab-pane active" data-view="overview"></section>
+    <section id="view-gcm" class="tab-pane" data-view="gcm"></section>
+    <section id="view-tcf" class="tab-pane" data-view="tcf">
+      <div id="tcfDynamic"></div>
+      <details class="section" data-key="tcf-manual-paste">
+        <summary>TC String Check — manual (paste a TC String below)</summary>
+        <div class="body">
+          <textarea id="tcfManualPaste" class="paste" rows="3" placeholder="Paste a TC string to decode it and compare it with the CMP's string" spellcheck="false"></textarea>
+          <div id="tcfManualResult" class="muted">Nothing pasted.</div>
+        </div>
+      </details>
+    </section>
+    <section id="view-gpp" class="tab-pane" data-view="gpp"></section>
+    <section id="view-uet" class="tab-pane" data-view="uet"></section>
+    <section id="view-about" class="tab-pane" data-view="about"></section>
+  </main>
+
+  <footer class="footer">
+    <span id="pageUrl" class="muted url" title=""></span>
+    <span class="footer-actions">
+      <button id="exportJsonBtn" class="btn btn-small" type="button" title="Download the full inspection as JSON">Export JSON</button>
+      <button id="exportCsvBtn" class="btn btn-small" type="button" title="Download the IAB-style compliance report as CSV">Export CSV</button>
+      <button id="reprobeBtn" class="btn btn-small" type="button" title="Ask the page to re-run all probes and re-send its state">Re-probe</button>
+      <button id="clearBtn" class="btn btn-small" type="button" title="Forget everything captured for this tab">Clear</button>
+    </span>
+    <span class="muted brand">Cookielet · CMP ID 503</span>
+  </footer>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>

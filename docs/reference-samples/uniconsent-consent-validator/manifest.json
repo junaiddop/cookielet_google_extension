@@ -1,0 +1,36 @@
+{
+   "action": {
+      "default_popup": "index.html"
+   },
+   "background": {
+      "service_worker": "background.js"
+   },
+   "content_scripts": [ {
+      "js": [ "inject.js" ],
+      "matches": [ "*://*/*" ],
+      "run_at": "document_start",
+      "world": "MAIN"
+   }, {
+      "js": [ "startup.js" ],
+      "matches": [ "*://*/*" ],
+      "run_at": "document_start"
+   } ],
+   "description": "Verify Google Consent Mode, IAB TCF and GPP consent signals.",
+   "host_permissions": [ "\u003Call_urls>" ],
+   "icons": {
+      "128": "logo32.png",
+      "16": "logo16.png",
+      "32": "logo32.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzrbwa7ytJZp1ryYjfCGESbD45DK084v2wvwl6MH+m1kAeHRUBAhh/taaoWQD3RvXS8oGVNfJBu4O/NVSC9j3pcezPwKhZInu9FGOHlPcd6ctjrbXaJY0VyzXumzneZUVRE+oMTR870mEenIyerKP5qM2uqH9E1Mwjr+spIWM9b1k002BOpmVZLnEbfi4c75chB6wwZprAP4g9+w8Y/k3olUQSmhhNmDImA6cK+tB5DAXHO1I3pfRNIg6bivq2yhyNZXrOvgBajS8XE6BZtaEbQAlfSI3H0OK2a8UFj6TuCl21mBpypPX4T3Uny9D9I9q6xRCoGZoQv66YmZiYFCliQIDAQAB",
+   "manifest_version": 3,
+   "name": "Consent Data Validator",
+   "permissions": [ "webRequest", "storage" ],
+   "short_name": "Consent Validator",
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "0.0.9",
+   "web_accessible_resources": [ {
+      "matches": [ "\u003Call_urls>" ],
+      "resources": [ "index.html" ]
+   } ]
+}

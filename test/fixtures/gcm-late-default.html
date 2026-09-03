@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>GCM late default</title>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-TEST');
+</script>
+<script src="/js/fake-gtag.js"></script>
+<script>
+  // default arrives AFTER the tag ran and evaluated consent
+  gtag('consent', 'default', { ad_storage: 'denied', analytics_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
+</script>
+</head><body><h1>Consent Mode: default set late</h1></body></html>

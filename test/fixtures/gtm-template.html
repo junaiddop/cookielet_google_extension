@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>GTM template consent</title>
+<script>
+  // GTM snippet
+  window.dataLayer = window.dataLayer || [];
+  dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
+</script>
+<script src="/js/fake-gtag.js"></script>
+<script>
+  // a GTM consent template writes straight into google_tag_data.ics — nothing on dataLayer
+  (function () { var ics = google_tag_data.ics; ics.usedDefault = true; ics.active = true; ['ad_storage','analytics_storage','ad_user_data','ad_personalization'].forEach(function (t) { ics.entries[t].default = false; }); })();
+  window.google_tag_manager['GTM-FAKE1'] = { dataLayer: { name: 'dataLayer' }, bootstrap: Date.now() };
+  dataLayer.push(['config', 'G-TEST']);
+  setTimeout(function () { dataLayer.push({ event: 'gtm.load' }); }, 200);
+</script>
+</head><body><h1>GTM consent template (ics only)</h1></body></html>
