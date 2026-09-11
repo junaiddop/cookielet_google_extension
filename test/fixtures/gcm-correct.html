@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>GCM correct</title>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('consent', 'default', { ad_storage: 'denied', analytics_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', wait_for_update: 500, region: ['DE', 'FR'] });
+  gtag('set', 'ads_data_redaction', true);
+  gtag('js', new Date());
+  gtag('config', 'G-TEST');
+</script>
+<script src="/js/fake-gtag.js"></script>
+<script>
+  setTimeout(function () { gtag('consent', 'update', { ad_storage: 'granted', analytics_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'granted' }); }, 300);
+</script>
+</head><body><h1>Consent Mode: correct order</h1></body></html>

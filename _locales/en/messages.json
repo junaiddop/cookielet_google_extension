@@ -1,0 +1,5 @@
+{
+  "extName": { "message": "Cookielet Consent Inspector", "description": "Extension name" },
+  "extDescription": { "message": "Inspect and validate Google Consent Mode v2, IAB TCF v2.2, IAB GPP and Microsoft UET consent signals on any page.", "description": "Extension description (max 132 chars)" },
+  "actionTitle": { "message": "Cookielet Consent Inspector", "description": "Toolbar button tooltip" }
+}

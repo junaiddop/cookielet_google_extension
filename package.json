@@ -1,0 +1,18 @@
+{
+  "name": "cookielet-consent-inspector",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Chrome extension that inspects and validates IAB TCF v2.2, IAB GPP, Google Consent Mode v2 and Microsoft UET consent signals on any page.",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node --test test/unit/",
+    "e2e": "node test/e2e/run_e2e.js",
+    "check": "bash scripts/check.sh",
+    "package": "bash scripts/package.sh",
+    "serve:fixtures": "node test/e2e/serve.js"
+  },
+  "license": "UNLICENSED"
+}

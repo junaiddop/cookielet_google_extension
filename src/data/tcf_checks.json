@@ -1,0 +1,515 @@
+{
+  "source": "IAB Europe CMP Validator 2.3 (structure.json), texts reproduced for compliance auditing; policy references quote the IAB Europe TCF Policies",
+  "summary": {
+    "cmpFound": "CMP Found",
+    "cmpId": "CMP Id",
+    "cmpVersion": "CMP Version",
+    "tcfApiVersion": "TCF API Version",
+    "tcfPolicyVersion": "TCF Policy Version",
+    "gdprApplies": "GDPR Applies"
+  },
+  "technical": [
+    {
+      "number": 1,
+      "id": "technicalComplianceCheck_1",
+      "text": "Are consent signals in the TC String created after affirmative action by the user",
+      "automated": false,
+      "tooltip": "",
+      "manualSteps": "For this check to pass, there must be either a) no TC String or b) all purpose and vendor consent signals must be set to 'no'.",
+      "policyReference": "Chapter II: Policies for CMPs; 5(3).\n\nA CMP must only generate a positive consent Signal on the basis of a clear affirmative action taken by a user that unambiguously signifies that user’s agreement on the basis of appropriate information in accordance with the law."
+    },
+    {
+      "number": 2,
+      "id": "technicalComplianceCheck_2",
+      "text": "If a 'Reject All' option is provided in the user interface, when the user clicks on it, are all consent signals for purposes and vendors set to 'off'?",
+      "automated": false,
+      "tooltip": "",
+      "manualSteps": "This check fails if there are any positive purpose or vendor consent signals after the user clicks 'Rejects All'.",
+      "policyReference": "Chapter II: Policies for CMPs; 5(3).\n\nA CMP must only generate a positive consent Signal on the basis of a clear affirmative action taken by a user that unambiguously signifies that user’s agreement on the basis of appropriate information in accordance with the law."
+    },
+    {
+      "number": 3,
+      "id": "technicalComplianceCheck_3",
+      "text": "Does the API return an updated TC string after a change of users’ choices made in the CMP UI?",
+      "automated": false,
+      "tooltip": "",
+      "manualSteps": "This check fails if the purpose and vendor consent or LI signals do not map the disclosures provided and choices made in the CMP UI.",
+      "policyReference": "Chapter II: Policies for CMPs; 5(3).\n\nA CMP must only generate a positive consent Signal on the basis of a clear affirmative action taken by a user that unambiguously signifies that user’s agreement on the basis of appropriate information in accordance with the law.\n\nChapter II: Policies for CMPs; 5(4).\n\nA CMP must only generate a positive legitimate interest Signal on the basis of the provision of transparency by the CMP about processing on the basis of a legitimate interest and must always generate a negative legitimate interest Signal if the user has indicated an objection to such processing on the basis of a legitimate interest.\n\nChapter II: Policies for CMPs; 5(5).\n\nA CMP must only generate a positive opt-in Signal for Special Features on the basis of a clear affirmative action taken by a user that unambiguously signifies that user’s agreement on the basis of appropriate information."
+    },
+    {
+      "number": 4,
+      "id": "technicalComplianceCheck_4",
+      "text": "Did all CMP API required commands return a correct response?",
+      "automated": true,
+      "tooltip": "",
+      "manualSteps": "This check fails if any of the following mandatory CMP API commands do not return an expected response: ping, addEventListener, removeEventListener.",
+      "policyReference": "CMP API v2.2 technical specification.\n\nAll CMPs must support the three required API commands: 'ping', 'addEventListener', and 'removeEventListener'."
+    },
+    {
+      "number": 5,
+      "id": "technicalComplianceCheck_5",
+      "text": "Is the CMP registered?",
+      "automated": true,
+      "tooltip": "",
+      "manualSteps": "CMP is registered as a participant of a Transparency and Consent Framework and included in the CMP list.",
+      "policyReference": "Chapter II: Policies for CMPs; 2(1). Applying and registering.\n\nCMPs must apply to IAB Europe for participation in the Framework. IAB Europe shall take reasonable steps to vet and approve a CMP’s application according to procedures adopted, and updated from time to time, by the MO."
+    },
+    {
+      "number": 6,
+      "id": "technicalComplianceCheck_6",
+      "text": "Is the GVL version format correct?",
+      "automated": true,
+      "tooltip": "",
+      "manualSteps": "This check fails if the GVL version number is 0 or a number higher than the latest version of the GVL.",
+      "policyReference": "Chapter II: Policies for CMPs; 4(3).\n\nA CMP must disclose Vendors’ GVL information, including Legal Bases, as declared, and update Vendors’ GVL information, including Legal Bases status in the Framework, wherever stored, according to the Specifications, without extension, modification, or supplementation, except as expressly allowed for in the Specifications."
+    },
+    {
+      "number": 7,
+      "id": "technicalComplianceCheck_7",
+      "text": "Is the current or penultimate version of the GVL being used?",
+      "automated": true,
+      "tooltip": "",
+      "manualSteps": "This checks fails if the version of the GVL being used is not the current or last version of the GVL (the last version of the GVL is acceptable as the GVL may be cached for up to one week meaning that the cached version could be 1 version out-of-date).",
+      "policyReference": "Chapter II: Policies for CMPs; 4(3).\n\nA CMP must disclose Vendors’ GVL information, including Legal Bases, as declared, and update Vendors’ GVL information, including Legal Bases status in the Framework, wherever stored, according to the Specifications, without extension, modification, or supplementation, except as expressly allowed for in the Specifications."
+    },
+    {
+      "number": 8,
+      "id": "technicalComplianceCheck_8",
+      "text": "Is the max vendor id less than or equal to the highest id in the GVL?",
+      "automated": true,
+      "tooltip": "",
+      "manualSteps": "This check fails if the max vendor id for consent or legitimate interest is not less than or equal to the highest vendor id in the GVL being used by the CMP.",
+      "policyReference": "Chapter II: Policies for CMPs; 4(1).\n\nIn addition to implementing the Framework according to the Specifications, a CMP must support the full Specifications, unless the Specifications expressly state that a feature is optional, in which case a CMP may choose to implement the optional feature but need not to do so."
+    },
+    {
+      "number": 9,
+      "id": "technicalComplianceCheck_9",
+      "text": "Are purposes 1, 3, 4, 5, and 6 set to 'no' for legitimate interest?",
+      "automated": true,
+      "tooltip": "",
+      "manualSteps": "Vendors cannot base processing for Purposes 1, 3, 4, 5, and 6 on Legitimate Interest.",
+      "policyReference": "Chapter II: Policies for CMPs; 5(6).\n\nA CMP will establish Legal Bases only in accordance with the declarations made by Vendors in the GVL and using the definitions of the Purposes and/or their translations found in the GVL, without extension, modification, or supplementation, except as expressly allowed for in the Policies."
+    },
+    {
+      "number": 10,
+      "id": "technicalComplianceCheck_10",
+      "text": "Do the Created and LastUpdated fields have the same value?",
+      "automated": true,
+      "tooltip": "",
+      "manualSteps": "As a result of the limited relevance of the Created field for publishers and their CMPs to remind users of their choices, the Created and LastUpdated fields have been updated to have the same value.",
+      "policyReference": "Chapter II: Policies for CMPs; 4(1).\n\nIn addition to implementing the Framework according to the Specifications, a CMP must support the full Specifications, unless the Specifications expressly state that a feature is optional, in which case a CMP may choose to implement the optional feature but need not to do so."
+    },
+    {
+      "number": 11,
+      "id": "technicalComplianceCheck_11",
+      "text": "Are the Created and LastUpdated timestamps imprecise?",
+      "automated": true,
+      "tooltip": "",
+      "manualSteps": "This check fails if the Created and LastUpdated timestamps do not have hours, minutes and seconds properly zeroed out.",
+      "policyReference": "Chapter II: Policies for CMPs; 4(1).\n\nIn addition to implementing the Framework according to the Specifications, a CMP must support the full Specifications, unless the Specifications expressly state that a feature is optional, in which case a CMP may choose to implement the optional feature but need not to do so."
+    },
+    {
+      "number": 12,
+      "id": "technicalComplianceCheck_12",
+      "text": "Are all vendor signals for deleted vendors set to 0?",
+      "automated": true,
+      "tooltip": "",
+      "manualSteps": "This check fails if there are any positive vendor consent or LI signals for vendors that are marked as deleted in the version of the GVL being used.",
+      "policyReference": "Chapter II: Policies for CMPs; 5(6)\n\nA CMP will establish Legal Bases only in accordance with the declarations made by Vendors in the GVL and using the definitions of the Purposes and/or their translations found in the GVL, without extension, modification, or supplementation, except as expressly allowed for in the Policies."
+    },
+    {
+      "number": 13,
+      "id": "technicalComplianceCheck_13",
+      "text": "Does the TC String include the disclosedVendors segment?",
+      "automated": true,
+      "tooltip": "",
+      "manualSteps": "This check fails if the TC String does not include the disclosedVendors segment after the Core String.",
+      "policyReference": "Chapter II: Policies for CMPs; 4(1)\n\nIn addition to implementing the Framework according to the Specifications, a CMP must support the full Specifications, unless the Specifications expressly state that a feature is optional, in which case a CMP may choose to implement the optional feature but need not to do so."
+    }
+  ],
+  "policy": [
+    {
+      "number": 1,
+      "id": "policyComplianceCheck_1",
+      "text": "Is the UI prominently displayed, covering most of the website content?",
+      "automated": false,
+      "tooltip": "This check fails if a TC String is created with purpose or vendor consent signals set to 'yes' before affirmative action by the user.",
+      "manualSteps": "",
+      "policyReference": "Appendix B, Policy C(a).\n\nWhen providing transparency about Purposes, Features and Vendors in connection with requesting a user’s consent for the same, the Framework UI’s must be displayed prominently and separately from other information, such as the general terms and conditions or the privacy policy, in a modal or banner that covers all or substantially all of the content of the website or app."
+    },
+    {
+      "number": 2,
+      "id": "policyComplianceCheck_2",
+      "text": "Is the UI displayed separately from other information such as terms and conditions or the privacy policy?",
+      "automated": false,
+      "tooltip": "",
+      "manualSteps": "",
+      "policyReference": "Appendix B, Policy C(a).\n\nWhen providing transparency about Purposes, Features, and Vendors in connection with requesting a user’s consent for the same, the Framework UI’s must be displayed prominently and separately from other information, such as the general terms and conditions or the privacy policy, in a modal or banner that covers all or substantially all of the content of the website or app."
+    },
+    {
+      "number": 3,
+      "id": "policyComplianceCheck_3",
+      "text": "Does the 1st layer of the UI provide information about the storage and access of information from the user’s device by third-party vendors?",
+      "automated": false,
+      "tooltip": "",
+      "manualSteps": "",
+      "policyReference": "Appendix B, Policy C(b)(I).\n\nInformation about the fact that information is stored on and/or accessed from the user’s device (e.g. use of cookies, device identifiers, or other device data);\n\nAppendix B, Policy C(b)(III).\n\nMust include information about the fact that third party Vendors will be storing and/or accessing information from the user’s device and processing their personal data, the number of third party Vendors (which may also include Vendors not participating in the Framework), and a link to the list of named third parties."
+    },
+    {
+      "number": 4,
+      "id": "policyComplianceCheck_4",
+      "text": "Does the 1st layer of the UI provide information about the processing of personal data by third party Vendors?",
+      "automated": false,
+      "tooltip": "",
+      "manualSteps": "",
+      "policyReference": "Appendix B, Policy C(b)(II).\n\nMust include information about the fact that personal data is processed, and the nature of the personal data processed (e.g. unique identifiers, browsing data);\n\nAppendix B, Policy C(b)(III).\n\nMust include information about the fact that third party Vendors will be storing and/or accessing information from the user’s device and processing their personal data, the number of third party Vendors (which may also include Vendors not participating in the Framework), and a link to the list of named third parties."
+    },
+    {
+      "number": 5,
+      "id": "policyComplianceCheck_5",
+      "text": "Does the 1st layer of the UI provide an example of personal data processed?",
+      "automated": false,
+      "tooltip": "",
+      "manualSteps": "",
+      "policyReference": "Appendix B, Policy C(b)(II).\n\nMust include information about the fact that personal data is processed, and the nature of the personal data processed (e.g. unique identifiers, browsing data);"
+    },
+    {
+      "number": 6,
+      "id": "policyComplianceCheck_6",
+      "text": "Is there a direct link to the list of third parties in the 1st layer of the UI?",
+      "automated": false,
+      "tooltip": "",
+      "manualSteps": "",
+      "policyReference": "Appendix B, Policy C(b)(III).\n\nMust include information about the fact that third party Vendors will be storing and/or accessing information from the user’s device and processing their personal data, the number of third party Vendors (which may also include Vendors not participating in the Framework), and a link to the list of named third parties."
+    },
+    {
+      "number": 7,
+      "id": "policyComplianceCheck_7",
+      "text": "Does the 1st layer of the UI provide information about the Purposes and/or Stacks and Special Features used by third parties?",
+      "automated": false,
+      "tooltip": "",
+      "manualSteps": "",
+      "policyReference": "Appendix B, Policy C(b)(IV).\n\nMust include the list of the distinct and separate Purposes for which the Vendors are processing data, using at least the standardised names and/or Stack names as defined in Appendix A.\n\nAppendix B, Policy C(b)(V).\n\nMust include information about the Special Features used by the Vendors when processing data."
+    },
+    {
+      "number": 8,
+      "id": "policyComplianceCheck_8",
+      "text": "Does the 1st layer of the UI provide information about the scope of the consent choice, i.e. service-specific consent or group-specific consent?",
+      "automated": false,
+      "tooltip": "",
+      "manualSteps": "",
+      "policyReference": "Appendix B, Policy C(b)(VII).\n\nMust include information about the scope of the consent choice, i.e. service-specific consent, or group-specific consent. If group-specific consent, a link with information about the group."
+    },
+    {
+      "number": 9,
+      "id": "policyComplianceCheck_9",
+      "text": "Does the 1st layer of the UI inform the user that they can withdraw their consent at any time and how to do so?",
+      "automated": false,
+      "tooltip": "",
+      "manualSteps": "",
+      "policyReference": "Appendix B, Policy C(b)(VIII).\n\nMust include information about the fact that the user can withdraw their consent at any time, and how to resurface the Framework UI in order to do so."
+    },
+    {
+      "number": 10,
+      "id": "policyComplianceCheck_10",
+      "text": "Are there calls to action in the 1st layer for users to express consent (e.g. “accept”) and customise their choices (e.g. ’manage options’)?",
+      "automated": false,
+      "tooltip": "",
+      "manualSteps": "",
+      "policyReference": "Appendix B, Policy C(b)(II).\n\nMust include information about the fact that personal data is processed, and the nature of the personal data processed (e.g. unique identifiers, browsing data).\n\nAppendix B, Policy C(b)(X).\n\nMust include a call to action for the user to express their consent (for example “Accept”, “Okay”, “Approve”, etc.).\n\nAppendix B, Policy C(b)(XI).\n\nMust include a call to action for the user to customise their choices (for example “Advanced Settings”, “Customise Choices”, etc.)."
+    },
+    {
+      "number": 11,
+      "id": "policyComplianceCheck_11",
+      "text": "Do the two primary calls to action on the 1st layer have matching text treatment and, for each, a minimum contrast ratio of 5:1?",
+      "automated": false,
+      "tooltip": "",
+      "manualSteps": "",
+      "policyReference": "Appendix B, Policy C(g).\n\nCalls to action in a Framework UI must not be invisible, illegible, or appear disabled. While calls to action do not need to be identical, to ensure they are clearly visible, they must have matching text treatment (font, font size, font style), and, for the text of each, a minimum contrast ratio of 5 to 1. To the extent that an Initial Layer has more than two calls to action, this policy only applies to the two primary calls to action."
+    },
+    {
+      "number": 12,
+      "id": "policyComplianceCheck_12",
+      "text": "Does the 1st layer of the UI show the number of the third party Vendors?",
+      "automated": false,
+      "tooltip": "",
+      "manualSteps": "",
+      "policyReference": "Appendix B: Policy C(b)(III).\n\nMust include information about the fact that third party Vendors will be storing and/or accessing information from the user’s device and processing their personal data, the number of third party Vendors (which may also include Vendors not participating in the Framework), and a link to the list of named third parties."
+    },
+    {
+      "number": 13,
+      "id": "policyComplianceCheck_13",
+      "text": "If the 1st layer of the UI provides information about the Purposes and Special Features used by Vendors using modified Stack descriptions, is the UseNonStandardTexts flag set to 1?",
+      "automated": false,
+      "tooltip": "",
+      "manualSteps": "",
+      "policyReference": "Chapter IV: Policy for Publishers; 21(6).\n\nA Publisher must not modify, or instruct its CMP to modify, Stack descriptions and/or their translations unless (a) the Publisher has registered a private CMP with the Framework, or its commercial CMP is using a CMP ID assigned to the Publisher for use with a private CMP; (b) the modified Stack descriptions cover the substance of standard Stack descriptions, such as accurately and fully covering all Purposes that form part of the Stack; (c) Vendors are alerted to the fact of a Publisher using custom Stack descriptions through the appropriate Signal in accordance with the Specification."
+    },
+    {
+      "number": 14,
+      "id": "policyComplianceCheck_14",
+      "text": "Does the UI show Purposes and Features with their standard names or Stacks?",
+      "automated": false,
+      "tooltip": "",
+      "manualSteps": "",
+      "policyReference": "Appendix B, Policy B(b).\n\nWhen providing transparency about Purposes, and Features, the Framework UI must do so only on the basis of the standard Purpose, Special Purpose, Feature, and Special Feature names and definitions of Appendix A as they are published on the Global Vendor List or using Stacks in accordance with the Policies and Specifications. UIs must make available the standard user-friendly text, and where applicable the standard illustrations for each Purpose, Special Purpose, Feature, Special Feature, and Category of data of Appendix A\n\nAppendix B, Policy B(c).\n\nWhere the Framework UI uses a language other than English, the Framework UI must do so only on the basis of official translations of the standard Purpose, Special Purpose, Feature, Special Feature, and Category of data names and definitions of Appendix A as they are published on the Global Vendor List.\n\nAppendix B, Policy C(b)(IV).\n\nMust include the list of the distinct and separate Purposes for which the Vendors are processing data, using at least the standardised names and/or Stack names as defined in Appendix A.\n\nAppendix B, Policy C(c)(II).\n\nReview the list of Purposes, Special Purposes, Features, and Special Features including their standard name, their full standard user-friendly text and where applicable their illustrations, as defined in Appendix A, the number of Vendors seeking consent for each of the Purposes (which may also include Vendors not participating in the Framework), and have  a way to see those Vendors."
+    },
+    {
+      "number": 15,
+      "id": "policyComplianceCheck_15",
+      "text": "Can users review the standard user-friendly texts and illustrations?",
+      "automated": false,
+      "tooltip": "",
+      "manualSteps": "",
+      "policyReference": "Appendix B, Policy B(b).\n\nWhen providing transparency about Purposes, and Features, the Framework UI must do so only on the basis of the standard Purpose, Special Purpose, Feature, Special Feature names and definitions of Appendix A as they are published on the Global Vendor List or using Stacks in accordance with the Policies and Specifications. UIs must make available the standard user-friendly text, and where applicable the standard illustrations for each of Purpose, Special Purpose, Feature, Special Feature, and Category of data of Appendix A."
+    },
+    {
+      "number": 16,
+      "id": "policyComplianceCheck_16",
+      "text": "If the UI includes non-TCF Vendors, are they presented separately?",
+      "automated": false,
+      "tooltip": "",
+      "manualSteps": "",
+      "policyReference": "Appendix B, Policy B(e).\n\nFor the avoidance of doubt, Framework UIs may be used to also provide transparency, and request consent, for purposes and/or vendors, that are not covered by the Framework. However, users must not be misled to believe that any non-Framework purpose and/or vendor are part of the Framework or subject to its Policies. If the Framework UI includes non- Framework purposes and/or vendors the Framework UI must make it possible for users to distinguish between Vendors registered with the Framework, and Purposes defined by the Framework, and those who are not.\n\nAppendix B, Policy C(e).\n\nIf a UI displays Vendors who are not registered with IAB Europe for participation in the Framework, the UI must make it possible for users to distinguish between Vendors registered with the Framework, and those who are not. The UI must not mislead others as to the Framework participation of any of the Vendors who are not registered with the MO."
+    },
+    {
+      "number": 17,
+      "id": "policyComplianceCheck_17",
+      "text": "Does the UI provide information about third party Vendors processing personal data based on legitimate interest (if any)?",
+      "automated": false,
+      "tooltip": "",
+      "manualSteps": "",
+      "policyReference": "Appendix B, Policy C(b)(IX).\n\nShould include information about the fact that some Vendors (if any) are not requesting consent, but processing the user’s data on the basis of their legitimate interest; the fact that the user has a right to object to such processing; and a link to the relevant layer of the Framework UI dealing with processing on the basis of legitimate interests where more information can be found.\n\nAppendix B, Policy D(a).\n\nWhen providing transparency about Purposes, Special Purposes, Features, Special Features, and Vendors in connection with a legitimate interest for the same, transparency must be provided at least through an easily accessible link to the relevant layer of the Framework UI dealing with processing on the basis of legitimate interests.\n\nAppendix B, Policy D(b).\n\nWhen providing transparency about Purposes, Special Purposes, Features, Special Features, and Vendors in connection with both requesting a user’s consent for the same and a legitimate interest, Policy C(a) applies, and the easily accessible link to the relevant layer of the Framework UI dealing with processing on the basis of legitimate interests required under Policy D(a) must be included in the Initial Layer of the Framework UI presented in line with Policy C(a)."
+    },
+    {
+      "number": 18,
+      "id": "policyComplianceCheck_18",
+      "text": "Does the UI advise the user of their right to object to their personal data being processed on the basis of legitimate interest (if any)?",
+      "automated": false,
+      "tooltip": "",
+      "manualSteps": "",
+      "policyReference": "Appendix B, Policy C(b)(IX).\n\nShould include information about the fact that some Vendors (if any) are not requesting consent, but processing the user’s data on the basis of their legitimate interest; the fact that the user has a right to object to such processing; and a link to the relevant layer of the Framework UI dealing with processing on the basis of legitimate interests where more information can be found."
+    },
+    {
+      "number": 19,
+      "id": "policyComplianceCheck_19",
+      "text": "Is the user able to review the list of Vendors, their Purposes, Special Purposes, Features, Special Features, associated Legal Bases, and a link to their privacy policy, as well as make granular choices per Purpose and per Vendor (when applicable)?",
+      "automated": false,
+      "tooltip": "",
+      "manualSteps": "",
+      "policyReference": "Appendix B, Policy C(c)(I).\n\nReview:\n\n• the list of named Vendors and a link to each Vendor’s privacy policy,\n• their Purposes, Special Purposes, associated Legal Bases, and corresponding retention period,\n• their Features and Special Features, and\n• the categories of data collected and processed;\n\nAppendix B, Policy C(c)(II).\n\nReview the list of Purposes, Special Purposes, Features, and Special Features including their standard name, their full standard user-friendly text, and where applicable their illustrations as defined in Appendix A, the number of Vendors seeking consent for each of the Purposes (which may also include Vendors not participating in the Framework), and have  a way to see those Vendors;\n\nAppendix B, Policy C(c)(III).\n\nMake granular and specific consent choices with respect to each Vendor, and, separately, each Purpose for which the Publisher chooses to obtain consent on behalf of or more Vendors.\n\nAppendix B, Policy C(h).\n\nBy way of derogation from Appendix B, Policies C(c)(iii) and (iv) and C(d), a Publisher shall not be required to allow a user to make granular and specific consent or opt-in choices if the Publisher implements a way for the user to access its content without consenting through other means, for example by offering paid access that does not require consenting to any Purposes. For the avoidance of doubt, all other Policies remain applicable."
+    },
+    {
+      "number": 20,
+      "id": "policyComplianceCheck_20",
+      "text": "Does the 2nd layer allow users to make granular and specific opt-in choices with respect to each Special Feature (when applicable)?",
+      "automated": false,
+      "tooltip": "",
+      "manualSteps": "",
+      "policyReference": "Appendix B, Policy C(c)(IV).\n\nMake granular and specific opt-in choices with respect to each Special Feature for which the Publisher chooses to obtain opt-ins on behalf of one or more Vendors."
+    },
+    {
+      "number": 21,
+      "id": "policyComplianceCheck_21",
+      "text": "Are user choices set to 'off' by default?",
+      "automated": false,
+      "tooltip": "",
+      "manualSteps": "",
+      "policyReference": "Appendix B, Policy C(d).\n\nWhen a user accesses a layer, which will be a secondary layer when using a layered approach, allowing them to make granular and specific consent choices with respect to each Purpose, under Policy C(c)(III), and/or to make granular and specific opt-in choices with respect to each Special Feature under Policy C(c)(IV) the default choice must be “no consent”, “no opt in” or “off”."
+    },
+    {
+      "number": 22,
+      "id": "policyComplianceCheck_22",
+      "text": "If legitimate interest is used by any Vendors as a legal basis, does the information in the 2nd layer specify the nature of processed information and its scope?",
+      "automated": false,
+      "tooltip": "",
+      "manualSteps": "",
+      "policyReference": "Appendix B, Policy D(c)(I).\n\nSee information about the fact that personal data is processed, and the nature of the personal data processed (e.g. unique identifiers, browsing data).\n\nAppendix B, Policy D(c)(II).\n\nSee information about the scope of the legitimate interest processing and scope of any objection to such processing, i.e. service-specific scope, or group-specific scope. If group-specific scope, a link with information about the group."
+    },
+    {
+      "number": 23,
+      "id": "policyComplianceCheck_23",
+      "text": "If legitimate interest is used by any Vendors as a legal basis, does the 2nd layer allow users to object to the processing of their personal data, per Purpose and per Vendor?",
+      "automated": false,
+      "tooltip": "",
+      "manualSteps": "",
+      "policyReference": "Appendix B, Policy D(c)(III).\n\nAccess controls within the Framework UI to object to processing of their personal data on the basis of a legitimate interest.\n\nAppendix B, Policy D(c)(V).\n\nExercise their right to object with respect to processing under a legitimate interest for each Vendor, and, separately, each Purpose for which the Publisher chooses to help establish Vendors transparency."
+    },
+    {
+      "number": 24,
+      "id": "policyComplianceCheck_24",
+      "text": "Does the 2nd UI layer provide information about Vendors' maximum device storage duration including whether such duration may be refreshed and, where applicable, additional purpose-specific storage?",
+      "automated": false,
+      "tooltip": "",
+      "manualSteps": "",
+      "policyReference": "Appendix B, Policy C(c)(VII).\n\nWhere applicable, review Vendors’ maximum device storage duration and whether Vendors refresh such duration (by stating, for example, that “duration may expire [n] months/days from your last interaction with the property”, where [n] represents the maximum duration for which the Vendor considers the user consent as valid) as well as, where available, review any additional purpose specific storage and access information provided by a Vendor in accordance with the Specifications."
+    },
+    {
+      "number": 25,
+      "id": "policyComplianceCheck_25",
+      "text": "Does the secondary layer show the number of Vendors seeking consent or relying on legitimate interest for each Purpose?",
+      "automated": false,
+      "tooltip": "",
+      "manualSteps": "",
+      "policyReference": "Appendix B: Policy C(c)(II).\n\nReview the list of Purposes, Special Purposes, Features, and Special Features including their standard name and their full standard user-friendly text, as defined in Appendix A, the number of Vendors seeking consent for each of the Purposes (which may also include Vendors not participating in the Framework), and have a way to see those Vendors.\n\nAppendix B: Policy D(c)(IV).\n\nReview the list of Purposes and Special Purposes including their standard name, their full standard user-friendly text and where applicable their illustrations, as defined in Appendix A, the number of Vendors processing their data for each of the Purposes on the basis of legitimate interest (which may also include Vendors not participating in the Framework), and have a way to see those Vendors."
+    },
+    {
+      "number": 26,
+      "id": "policyComplianceCheck_26",
+      "text": "Does the secondary layer allow users to access Vendors’ information about their legitimate interest at stake, where applicable?",
+      "automated": false,
+      "tooltip": "",
+      "manualSteps": "",
+      "policyReference": "Appendix B: Policy D(c)(VI)\n\nReview:\n\n• the list of named Vendors, and a link to each Vendor’s privacy policy,\n• their Purposes, Special, Purposes, associated Legal Bases (and a link to each Vendor's explanation of its legitimate interest(s) at stake) and corresponding retention period,\n• their Features, Special Features and\n• the categories of data collected and processed"
+    },
+    {
+      "number": 27,
+      "id": "policyComplianceCheck_27",
+      "text": "Does the secondary layer provide information about Vendors' retention periods?",
+      "automated": false,
+      "tooltip": "",
+      "manualSteps": "",
+      "policyReference": "Appendix B: Policy C(c)(I)\n\nReview:\n\n• the list of named Vendors and a link to each Vendor’s privacy policy,\n• their Purposes, Special Purposes, associated Legal Bases and corresponding retention period,\n• their Features and Special Features, and\n• the categories of data collected and processed\n\nAppendix B: Policy D(c)(VI)\n\nReview:\n\n• the list of named Vendors and a link to each Vendor’s privacy policy,\n• their Purposes, Special, Purposes, associated Legal Bases (and a link to each  Vendor’s explanation of its legitimate interest(s) at stake) and corresponding retention period,\n• their Features, Special Features, and\n• the categories of data collected and processed"
+    },
+    {
+      "number": 28,
+      "id": "policyComplianceCheck_28",
+      "text": "Does the secondary layer disclose the categories of data collected and/or already held by Vendors?",
+      "automated": false,
+      "tooltip": "",
+      "manualSteps": "",
+      "policyReference": "Appendix B, Policy C(c)(I)\n\nReview:\n\n• the list of named Vendors and a link to each Vendor’s privacy policy,\n• their Purposes, Special Purposes, associated Legal Bases and corresponding retention period,\n• their Features and Special Features, and\n• the categories of data collected and processed\n\nAppendix B: Policy C(c)(VI)\n\nReview:\n\n• the list of named Vendors and a link to each Vendor’s privacy policy,\n• their Purposes, Special, Purposes, associated Legal Bases (and a link to each  Vendor’s explanation of its legitimate interest(s) at stake) and corresponding retention period,\n• their Features, Special Features and\n• the categories of data collected and processed"
+    },
+    {
+      "number": 29,
+      "id": "policyComplianceCheck_29",
+      "text": "If the secondary layer of the UI provides modified or additional illustrations about the Purposes and Special Purposes used by Vendors, is the UseNonStandardTexts flag set to 1?",
+      "automated": false,
+      "tooltip": "",
+      "manualSteps": "",
+      "policyReference": "Chapter IV: Policy for Publishers; 21(7).\n\nA publisher must not modify or supplement, or instruct its CMP to modify or supplement, standard illustrations and/or their translations unless: (a) the Publisher follows any guidance that may be disseminated or updated by the MO so that the modified or additional illustrations provide accurate examples of data processing operations performed by Vendors under the Purposes; (b) the Publisher can modify only one of the two standard illustrations presented for each Purpose. Modifying the standard illustrations for Special Purposes and Purpose 1 (store and/or access information on a device) is not permitted; (c) Vendors are alerted to the fact of a Publisher using custom illustrations through the appropriate Signal in accordance with the Specification."
+    },
+    {
+      "number": 30,
+      "id": "policyComplianceCheck_30",
+      "text": "Does the secondary layer of the UI disclose the storage and access information relating to the CMP’s recording of signals, including the maximum device storage duration where applicable?",
+      "automated": false,
+      "tooltip": "",
+      "manualSteps": "",
+      "policyReference": "Appendix B: Policy (D)(c) (VII).\n\nc. When providing transparency about Purposes, Special Purposes, Features, Special Features and Vendors in connection with a legitimate interest for the same, a single secondary layer must be provided that allows the user to: (...)\n\nVII. review where applicable the storage and access information relating to the CMP’s recording of Signals, including the maximum device storage duration."
+    },
+    {
+      "number": 31,
+      "id": "policyComplianceCheck_31",
+      "text": "Is the user able to resurface the CMP UI easily?",
+      "automated": false,
+      "tooltip": "",
+      "manualSteps": "",
+      "policyReference": "Appendix B: Policy (C)(f).\n\nA user must be able to resurface the Framework UI from an easily accessible link or call to action, such as a floating icon or a footer link available on each webpage of the Publisher’s website, or from the top-level settings of the Publisher’s app as to allow them to withdraw their consent as easily as it was to give it."
+    },
+    {
+      "number": 32,
+      "id": "policyComplianceCheck_32",
+      "text": "Is the user able to withdraw their consent as easily as they were able to give consent?",
+      "automated": false,
+      "tooltip": "",
+      "manualSteps": "",
+      "policyReference": "Appendix B: Policy (C)(f)\n\nIf a call to action for the user to express their consent for all Purposes and Vendors was provided in the Initial Layer of the Framework UIs used to request the user’s consent (for example “Consent to all”), an equivalent call to action for the user to withdraw their consent for all Purposes and Vendors must be provided in the Framework UI that the user resurfaces (for example “Withdraw consent to all”)."
+    }
+  ],
+  "cmpApi": [
+    {
+      "number": 1,
+      "title": "CMP Information",
+      "checks": [
+        {
+          "number": 1,
+          "id": "cmpTcfApiCheck_cmpInformation_cmpId",
+          "text": "CMP id"
+        },
+        {
+          "number": 2,
+          "id": "cmpTcfApiCheck_cmpInformation_cmpIsCommercial",
+          "text": "CMP is commercial"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "CMP API",
+      "checks": [
+        {
+          "number": 1,
+          "id": "cmpTcfApiCheck_cmpApi_tcfVersion",
+          "text": "TCF Version"
+        },
+        {
+          "number": 2,
+          "id": "cmpTcfApiCheck_cmpApi_tcfApiFound",
+          "text": "__tcfapi found"
+        },
+        {
+          "number": 3,
+          "id": "cmpTcfApiCheck_cmpApi_tcfApiLocatorFound",
+          "text": "__tcfapiLocator found"
+        },
+        {
+          "number": 4,
+          "id": "cmpTcfApiCheck_cmpApi_pingResponse",
+          "text": "ping response"
+        },
+        {
+          "number": 5,
+          "id": "cmpTcfApiCheck_cmpApi_getTCDataResponse",
+          "text": "getTCData response"
+        },
+        {
+          "number": 6,
+          "id": "cmpTcfApiCheck_cmpApi_addEventListenerResponse",
+          "text": "addEventListener response"
+        },
+        {
+          "number": 7,
+          "id": "cmpTcfApiCheck_cmpApi_removeEventListenerResponse",
+          "text": "removeEventListener response"
+        },
+        {
+          "number": 8,
+          "id": "cmpTcfApiCheck_cmpApi_getInAppTCDataResponse",
+          "text": "getInAppTCData response (optional)"
+        },
+        {
+          "number": 9,
+          "id": "cmpTcfApiCheck_cmpApi_getVendorListResponse",
+          "text": "getVendorList response (optional)"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "CMP API Ping",
+      "checks": [
+        {
+          "number": 1,
+          "id": "cmpTcfApiCheck_cmpApiPing_cmpLoaded",
+          "text": "cmpLoaded"
+        },
+        {
+          "number": 2,
+          "id": "cmpTcfApiCheck_cmpApiPing_gdprApplies",
+          "text": "gdprApplies"
+        },
+        {
+          "number": 3,
+          "id": "cmpTcfApiCheck_cmpApiPing_cmpStatus",
+          "text": "CMP status"
+        },
+        {
+          "number": 4,
+          "id": "cmpTcfApiCheck_cmpApiPing_displayStatus",
+          "text": "Display status"
+        }
+      ]
+    }
+  ]
+}
