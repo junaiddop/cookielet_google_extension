@@ -1,0 +1,10 @@
+# ── main_raw: the full working branch. Everything is tracked here. ──
+# The public `main` branch ships a different .gitignore — see .gitignore.main
+# and scripts/sync-main.sh.
+
+node_modules/
+.DS_Store
+*.log
+
+# Unpacked build output — only the packaged .zip is tracked.
+/dist/*/

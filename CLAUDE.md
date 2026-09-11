@@ -118,3 +118,33 @@ reference samples live under `docs/reference-samples/` for that reason.
 - `E2E_KEEP=1 npm run e2e` keeps the headless browser alive 30 s at the end.
 - The GVL/cmp-list/ATP caches live in `chrome.storage.local` (`gvl_latest`, `cmp_list`,
   `atp_list`, `gvl_v<N>`), 24 h TTL; **Refresh GVL** on the TCF tab forces a refetch.
+
+## Branches: `main_raw` (work here) vs `main` (published)
+
+**All work happens on `main_raw`**, which tracks every file. `main` is a *generated*
+public branch that omits the internal-only paths — never edit, commit to, or merge
+into `main` by hand.
+
+| | `main_raw` | `main` |
+|---|---|---|
+| runtime (`manifest.json`, `src/`, `_locales/`, `icons/`) | ✅ | ✅ |
+| `package.json`, `README.md`, `CHANGELOG.md`, `test/`, `scripts/` | ✅ | ✅ |
+| `CLAUDE.md`, `code.md`, `docs/`, `dist/` | ✅ | ❌ |
+
+Publish a change:
+
+```bash
+git checkout main_raw && git commit -am "..."   # normal work
+bash scripts/sync-main.sh                       # rebuild main from main_raw
+git push origin main_raw && git push origin main
+```
+
+`sync-main.sh` assembles `main`'s tree directly (`read-tree` → `commit-tree`), so
+there is no merge and therefore no modify/delete conflict, however often the docs
+change. The exclusion list is the `EXCLUDE` array at the top of that script — it is
+the single source of truth. `main` ships `.gitignore.main` as its `.gitignore`.
+
+`bash scripts/install-branch-ignore-hook.sh` installs a `post-checkout` hook that
+swaps `.git/info/gitignore.<branch>` into `.git/info/exclude`. Re-run it after a
+fresh clone (hooks are not cloned). It only guards *untracked* files — a `.gitignore`
+can never remove something already committed; that is `sync-main.sh`'s job.

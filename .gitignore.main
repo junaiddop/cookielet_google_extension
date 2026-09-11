@@ -1,0 +1,11 @@
+# ── Becomes .gitignore on the public `main` branch (see scripts/sync-main.sh) ──
+# These paths live only on main_raw and must never be committed to main.
+
+CLAUDE.md
+code.md
+/docs
+/dist
+
+node_modules/
+.DS_Store
+*.log
